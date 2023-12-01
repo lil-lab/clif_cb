@@ -1,0 +1,5 @@
+eventlet==0.31.0
+Flask==1.1.1
+Flask-socketio==4.2.1
+python-engineio==3.13.2
+termcolor==1.1.0

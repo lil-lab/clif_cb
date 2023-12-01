@@ -1,0 +1,16 @@
+port: 8080
+agentfactory: switcher.FollowerSwitchingFactory
+matchmode: HUMAN_AND_AGENT_FOLLOWER
+factory_directory: '../cb_vin_feedback/web_agent/factories/'
+agent_config_path: '../cb_vin_feedback/web_agent/factories/switcher.yml'
+fixed_game_seed: -1
+show_feedback_options: True
+game_requires_qualification: False
+tutorials_require_qualification: True
+disable_game_play:  False
+disable_tutorials: True
+use_fog:  True
+fog_range:  9
+fog_color:  0
+show_fog_for_leader: True
+total_num_agents: 2

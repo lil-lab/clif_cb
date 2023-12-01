@@ -1,0 +1,7 @@
+'agents': {
+  'no_heuristics': '7_5_no_heuristics.yml',
+  'no_negative': '7_5_no_negative.yml',
+  'original': '7_5_original.yml',
+  'eighth': '7_5_eighth.yml'
+}
+

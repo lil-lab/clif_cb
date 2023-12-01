@@ -1,0 +1,220 @@
+syntax = "proto3";
+package CerealBar;
+
+option csharp_namespace = "CereaBar.Protobuf";
+
+/*
+  StringMessage: A single string Message
+*/
+message StringMessage{
+  string message = 1;
+}
+
+message IntMessage{
+  int32 message = 1;
+}
+
+/*
+  HexCoordinate: integer coordinates
+*/
+message HexCoordinate{
+  int32 hexX = 1;
+  int32 hexZ = 2;
+}
+
+message MapInfo{
+  message HexCellInfo{
+    HexCoordinate coordinate =  1;
+    string lType = 2;
+  }
+  repeated HexCellInfo cellinfo = 1;
+  message PropPlacementInfo{
+    string pName = 1;
+    string rotV3 = 2;
+    HexCoordinate coordinate = 3;
+  }
+  repeated PropPlacementInfo propinfo = 2;
+  PropPlacementInfo leaderinfo = 3;
+  PropPlacementInfo followerinfo = 4;
+  repeated Card cards = 5;
+  StaticGameInfo gameinfo = 6;
+}
+
+message Card{
+  string color = 1;
+  string shape = 2;
+  string count = 3;
+  HexCoordinate coordinate = 4;
+  bool selected = 5;
+}
+
+message CardList{
+  repeated Card cardlist = 1;
+}
+
+message CardStatusChange{
+  Card card = 1;
+  string result = 2;
+  bool valid = 3;
+  repeated Card selectedcards = 4;
+}
+
+message Movement{
+  string character = 1;
+  string type = 2;
+  HexCoordinate nextposition = 3;
+  int32 nextrotation = 4;
+  string actionid = 5;
+  StaticGameInfo gameinfo = 6;
+}
+
+message TurnOver{
+  int32 numremainingturns = 1;
+  string method = 2;
+}
+
+message YourTurn{
+  int32 numremainingturns = 1;
+  string method = 2;
+}
+
+
+message RequestEndTurn{
+  string method = 1;
+  StaticGameInfo gameinfo = 2;
+}
+
+
+message GameEnded {
+  int32 finalscore = 1;
+  string method = 2;
+}
+
+
+message GameArgs{
+  bool show_feedback = 1;
+  bool showlogvisual = 2;
+  bool showfog = 3;
+  bool showfollowerfogonleader = 4;
+  // fogcolor default should be 223, range from 0 - 255
+  int32 fogcolor = 5;
+  // fogrange is measured in hex count
+  int32 fogrange = 6;
+}
+
+message StaticGameInfo{
+  string seed = 1;
+  string character = 2;
+  string gameid = 3;
+  string workerid = 4;
+  string assignmentid = 5;
+  int32 numcards = 6;
+  int32 moveid = 7;
+  int32 turnid = 8;
+  int32 instructionid = 9;
+  int32 score = 10;
+  string userhandle = 11;
+  GameArgs args = 12;
+}
+
+message Instruction{
+  string instructiontext = 1;
+  StaticGameInfo gameinfo = 2;
+}
+
+message InstructionIndex{
+  int32 instructionindex = 1;
+  string actionid = 2;
+  StaticGameInfo gameinfo = 3;
+}
+
+message JoinLobby{
+  int32 debugseed = 1;
+  StaticGameInfo gameinfo = 2;
+}
+
+message DebugLog{
+  string message = 1;
+  StaticGameInfo gameinfo = 2;
+}
+
+message ScoreSetCard{
+  repeated Card setcard = 1;
+  repeated Card newcards = 2;
+  int32 newscore = 3;
+  int32 newturns = 4;
+  CardSetAnimationSetting animationsetting = 5;
+}
+
+// Default Value Should be set as
+// ymovevalue = 10f
+// ymoveinterval = 0.5f
+// rotatevalue = -90f
+// rotateinterval = 0.4f
+// rotatetospininterval = 0.2f
+// spininterval = 0.2f
+message CardSetAnimationSetting{
+  float ymovevalue = 1;
+  float ymoveinterval = 2;
+  float rotatevalue = 3;
+  float rotateinterval = 4;
+  float rotatetospininterval = 5;
+  float spininterval = 6;
+}
+
+message LeaderExecutedFollowerAction{
+  string actionid = 1;
+  float clienttime = 2;
+  StaticGameInfo gameinfo = 3;
+}
+
+message LeaderFeedback{
+  string actionid = 1;
+  string type = 2;
+  StaticGameInfo gameinfo = 3;
+  float clienttime = 4;
+}
+
+message LeaderboardResult{
+  message Entry{
+    string rank = 1;
+    string leader = 2;
+    string follower = 3;
+    string turns = 4;
+    string time = 5;
+    string score = 6;
+  }
+  repeated Entry result = 1;
+  Entry personalbest = 2;
+}
+
+// cameratype: 0 is angled, 1 is overhead
+message CameraToggle{
+  int32 cameratype = 1;
+  StaticGameInfo gameinfo = 2;
+}
+
+message ShiftPressed{
+  StaticGameInfo gameinfo = 1;
+}
+
+message TutorialStep{
+  string maintext = 1;
+  bool shouldshift = 2;
+  bool canmove = 3;
+  bool canendturn = 4;
+  bool istutorialend = 5;
+  bool disablecommand = 6;
+  bool enablegoodbutton = 7;
+  bool enablebadbutton = 8;
+  bool enablestopbutton = 9;
+  string uitopoint = 10;
+  bool enablefinishcommand = 11;
+}
+
+message ClientExceptionLog
+{
+  string condition = 1;
+  string stacktrace = 2;
+  string logtype = 3;
+}

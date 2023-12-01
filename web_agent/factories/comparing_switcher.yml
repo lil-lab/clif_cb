@@ -1,0 +1,14 @@
+'agents': {
+  'normal_argmax_round1':
+    {
+      experiment_name: 'finetune_normal_argmax_h0.025_v2',
+      model_save: 'best_model_19.pt',
+      sampling: 'False'
+    },
+  'normal_argmax_round2':
+    {
+      experiment_name: 'finetune_normal_argmax_round2_v2',
+      model_save: 'best_model_18.pt',
+      sampling: 'False'
+    }
+}

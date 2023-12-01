@@ -1,0 +1,14 @@
+'agents': {
+  'round_4_new':
+    {
+      experiment_name: 'd0_to_4_noips_v3',
+      model_save: 'model_17.pt',
+      sampling: 'True'
+    },
+    'round_4_old':
+    {
+        experiment_name: 'd0to4_v3',
+        model_save: 'model_24.pt',
+        sampling: 'True'
+    }
+}

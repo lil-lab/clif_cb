@@ -1,0 +1,21 @@
+{
+  "dataset_split": "DEV",
+  "model_filepaths": [""],
+  "standalone_config": null,
+  "debug": true,
+  "rollout_config": {
+    "restrict_to_neighbors": false,
+    "use_sampling": false,
+    "ensemble_inference": true,
+    "game_config": {
+      "allow_player_intersections": true
+    }
+  },
+  "gold_forcing_actions": false,
+  "randomize": false,
+  "cascaded_evaluation": false,
+  "online_dataset_name": null,
+  "sampling": true,
+  "argmax": false
+}
+
